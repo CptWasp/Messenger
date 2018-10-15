@@ -1,0 +1,13 @@
+{
+    "firstname": "Alex",
+    "lastName": "Hovard",
+    "address": {
+        "address": "Москвская, 13",
+        "city": "Москва",
+        "index": "121212"
+    },
+    "phoneNumbers":[
+        "8998080809",
+        "0923403880"
+    ]
+}

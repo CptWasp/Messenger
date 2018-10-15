@@ -1,0 +1,77 @@
+<?php
+session_start();
+
+if(isset($_POST["send"])){
+        $_SESSION["email"] = $message;  
+       $message = rand(1111, 9999);
+        $login = htmlspecialchars($_POST["login"]);
+        //$check = htmlspecialchars($_POST["check"]);
+        $pass = htmlspecialchars($_POST["pass"]);
+                                 
+        //приписываем сессии для всех 
+            $_SESSION["login"] = $login;
+            //$_SESSION["check"] = $message;
+            $_SESSION["password"] = $pass;
+                                 
+            $error = false;
+                                 
+                                 
+                                 
+                                 
+            if($login == "" || !preg_match("/@/", $login)){
+                $error = true;
+            }
+            if(strlen($pass) == 0){
+                $error = true;
+            }
+            //отправляем сообщение если нету ошибок
+                if(!$error){
+                    $subject = "Ваше кодовое слово: ".$message;
+                    $subject = "=?utf-8?B?".base64_encode($subject)."?=";
+                    $headers = "from: $login\r\nReply-to: $login\r\nContent-type:text/plain; charset=utf-8\r\n";
+                    //отправляем
+                    mail($login, $subject, $message, $headers);
+          
+                }
+        
+   
+        
+    }
+
+
+?>
+
+
+
+// просто тестовый документ для хранения полезного (работающего кода)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?
+session_start();
+    include  'test.php';
+        
+
+
+        if(isset($_POST['checkButton'])){
+            echo $_SESSION["check"];
+            if($_SESSION["check"] == $_POST['tiCode']){
+                echo $_SESSION["check"];
+            }
+        }
+
+        
+
+session_destroy;
+?>
